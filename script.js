@@ -12,11 +12,12 @@ console.log(checkingDeposit)
 console.log(savingsWithdrawl)
 console.log(savingsDeposit)
 
-// Users need to be able to deposit money into an account, savings and checking.
-const deposit = [] //establish a variable with an empty array, this is what user will put in.
 
-// Users need to be able to withdraw from savings and checking account
-const withdraw = [] //establish a variable with an empty array, this is what user take out.
+// Establish a variable with an empty array, this is what user will put in.
+const deposit = [] 
+
+// Establish a variable with an empty array, this is what user take out.
+const withdraw = [] 
 
 // Users need to be able to see their balance in their savings and checking account
 const checkingBalance = document.querySelector('#checking-balance')
@@ -26,15 +27,28 @@ const savingsBalance = document.querySelector('#savings-balance')
 console.log(checkingBalance)
 console.log(savingsBalance)
 
-
-
-
+// Create currency variable, this creates language sensitive number formatting, this will allow users to enter in their proper currency. In this case it will be USD.
 const currency = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
   minimumFractionDigits: 2,
-  // this creates language sensitive number formatting, this will allow users to enter in their proper currency. In this case it will be USD.
 })
+
+
+
+// Users need to be able to deposit money into checking account.
+checkingDeposit.addEventListener('click', () => {
+
+  // Use conditional to check if deposit is a number
+
+})
+
+
+// Users need to be able to deposit money into savings account.
+
+
+
+// Users need to be able to withdraw money from savings and checking account.
 
 
 
