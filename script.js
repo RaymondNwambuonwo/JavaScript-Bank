@@ -45,7 +45,6 @@ const currency = new Intl.NumberFormat('en-US', {
 
 // Users need to be able to deposit money into checking account.
 checkingDeposit.addEventListener('click', () => {
-
   // Use conditional to check if deposit is a number
   if (isNaN(userCheckingDeposit.value)) {
     alert("Enter a number.")
@@ -76,7 +75,34 @@ checkingDeposit.addEventListener('click', () => {
 
 
 // Users need to be able to deposit money into savings account.
+savingsDeposit.addEventListener('click', () => {
+  // Use conditional to check if deposit is a number
+  if (isNaN(userSavingDeposit.value)) {
+    alert("Enter a number.")
+    return userSavingDeposit.value = '';
+  } else {
+    //make condition for deposit to meet
+    if (userSavingDeposit.value < 0.01 || userSavingDeposit.value > 1000000.00) {
+      alert("Give a penny or a million but nothing more or less!")
+      return userSavingDeposit.value = '';
+    } else {
 
+      // Now use deposit variable with empty array to push value into.
+      deposit.push(Number(userSavingDeposit.value));
+
+      // Get Total Balance
+      balance += (Number(userSavingDeposit.value))
+
+      // format balance to show in money format
+      let convertedBalance = currency.format(balance)
+      document.querySelector("#savings-balance").innerHTML = convertedBalance;
+
+      // console log deposit to see if worked
+      console.log(`${userSavingDeposit.value}`)
+      return userSavingDeposit.value = ''
+    }
+  }
+})
 
 
 // Users need to be able to withdraw money from savings and checking account.
