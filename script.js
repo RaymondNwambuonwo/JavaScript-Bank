@@ -27,6 +27,13 @@ const savingsBalance = document.querySelector('#savings-balance')
 console.log(checkingBalance)
 console.log(savingsBalance)
 
+// Declare variable that allows to place input
+const userCheckingDeposit = document.querySelector('#check-input')
+const userSavingDeposit = document.querySelector('#saving-input')
+
+// Declare balance variable 
+let balance = 0;
+
 // Create currency variable, this creates language sensitive number formatting, this will allow users to enter in their proper currency. In this case it will be USD.
 const currency = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -40,7 +47,31 @@ const currency = new Intl.NumberFormat('en-US', {
 checkingDeposit.addEventListener('click', () => {
 
   // Use conditional to check if deposit is a number
+  if (isNaN(userCheckingDeposit.value)) {
+    alert("Enter a number.")
+    return userCheckingDeposit.value = '';
+  } else {
+    //make condition for deposit to meet
+    if (userCheckingDeposit.value < 0.01 || userCheckingDeposit.value > 1000000.00) {
+      alert("Give a penny or a million but nothing more or less!")
+      return userCheckingDeposit.value = '';
+    } else {
 
+      // Now use deposit variable with empty array to push value into.
+      deposit.push(Number(userCheckingDeposit.value));
+
+      // Get Total Balance
+      balance += (Number(userCheckingDeposit.value))
+
+      // format balance to show in money format
+      let convertedBalance = currency.format(balance)
+      document.querySelector("#checking-balance").innerHTML = convertedBalance;
+
+      // console log deposit to see if worked
+      console.log(`${userCheckingDeposit.value}`)
+      return userCheckingDeposit.value = ''
+    }
+  }
 })
 
 
