@@ -1,13 +1,16 @@
 # JavaScript Bank
 # About
-A vanilla Javascript JavaSCript Bank. 
+A vanilla Javascript JavaScript Bank. 
 
 ## Technologies Used
 1. HTML
 2. CSS
 3. JavaScript
 
-<img width="776" alt="Screen Shot 2020-01-30 at 10 27 52 AM" src="https://user-images.githubusercontent.com/54545904/73463437-3cce9080-434b-11ea-820d-02f714d388a7.png">
+![Screen Shot 2021-01-23 at 10 08 51 AM](https://user-images.githubusercontent.com/54545904/105601891-335fe480-5d63-11eb-910a-1c12b8ddeb7f.png)
+
+
+![Screen Shot 2021-01-23 at 10 09 55 AM](https://user-images.githubusercontent.com/54545904/105601932-365ad500-5d63-11eb-8ab8-084531fda4ab.png)
 
 
 ## Deployed Site
