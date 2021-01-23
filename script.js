@@ -28,8 +28,8 @@ console.log(checkingBalance)
 console.log(savingsBalance)
 
 // Declare variable that allows to place input
-const userCheckingDeposit = document.querySelector('#check-input')
-const userSavingDeposit = document.querySelector('#saving-input')
+const userChecking = document.querySelector('#check-input')
+const userSaving = document.querySelector('#saving-input')
 
 // Declare balance variable 
 let balance = 0;
@@ -46,29 +46,29 @@ const currency = new Intl.NumberFormat('en-US', {
 // Users need to be able to deposit money into checking account.
 checkingDeposit.addEventListener('click', () => {
   // Use conditional to check if deposit is a number
-  if (isNaN(userCheckingDeposit.value)) {
+  if (isNaN(userChecking.value)) {
     alert("Enter a number.")
-    return userCheckingDeposit.value = '';
+    return userChecking.value = '';
   } else {
     //make condition for deposit to meet
-    if (userCheckingDeposit.value < 0.01 || userCheckingDeposit.value > 1000000.00) {
+    if (userChecking.value < 0.01 || userChecking.value > 100000.00) {
       alert("Give a penny or a million but nothing more or less!")
-      return userCheckingDeposit.value = '';
+      return userChecking.value = '';
     } else {
 
       // Now use deposit variable with empty array to push value into.
-      deposit.push(Number(userCheckingDeposit.value));
+      deposit.push(Number(userChecking.value));
 
       // Get Total Balance
-      balance += (Number(userCheckingDeposit.value))
+      balance += (Number(userChecking.value))
 
       // format balance to show in money format
       let convertedBalance = currency.format(balance)
       document.querySelector("#checking-balance").innerHTML = convertedBalance;
 
       // console log deposit to see if worked
-      console.log(`${userCheckingDeposit.value}`)
-      return userCheckingDeposit.value = ''
+      console.log(`${userChecking.value}`)
+      return userChecking.value = ''
     }
   }
 })
@@ -77,45 +77,98 @@ checkingDeposit.addEventListener('click', () => {
 // Users need to be able to deposit money into savings account.
 savingsDeposit.addEventListener('click', () => {
   // Use conditional to check if deposit is a number
-  if (isNaN(userSavingDeposit.value)) {
-    alert("Enter a number.")
-    return userSavingDeposit.value = '';
+  if (isNaN(userSaving.value)) {
+    alert("Enter a number")
+    return userSaving.value = '';
   } else {
     //make condition for deposit to meet
-    if (userSavingDeposit.value < 0.01 || userSavingDeposit.value > 1000000.00) {
+    if (userSaving.value < 0.01 || userSaving.value > 1000000.00) {
       alert("Give a penny or a million but nothing more or less!")
-      return userSavingDeposit.value = '';
+      return userSaving.value = '';
     } else {
 
       // Now use deposit variable with empty array to push value into.
-      deposit.push(Number(userSavingDeposit.value));
+      deposit.push(Number(userSaving.value));
 
       // Get Total Balance
-      balance += (Number(userSavingDeposit.value))
+      balance += (Number(userSaving.value))
 
       // format balance to show in money format
       let convertedBalance = currency.format(balance)
       document.querySelector("#savings-balance").innerHTML = convertedBalance;
 
       // console log deposit to see if worked
-      console.log(`${userSavingDeposit.value}`)
-      return userSavingDeposit.value = ''
+      console.log(`${userSaving.value}`)
+      return userSaving.value = ''
     }
   }
 })
 
 
-// Users need to be able to withdraw money from savings and checking account.
+// Users need to be able to withdraw money from checking account.
+checkingWithdrawl.addEventListener('click', () => {
+  // Check if input is a number, same as above
+  if (isNaN(userChecking.value)) {
+    alert("Please enter a number")
+    return userChecking.value = '';
+  } else {
+
+    // set condition that account cant go below $1
+    if (userChecking.value > balance - 1) {
+      alert("Your balance cannot drop below $1.")
+      return userChecking.value = '';
+    } else {
+
+      // push to empty array withdraw
+      withdraw.push(Number(userChecking.value));
+
+      // total balance
+      balance -= (Number(userChecking.value))
+
+      // format to proper currency
+      let convertedBalance = currency.format(balance);
+      document.querySelector('#checking-balance').innerHTML = convertedBalance;
+
+      // console out result and then return
+      console.log(`${userChecking.value}`)
+      return userChecking.value = ''
+    }
+  }
+})
 
 
 
-// Account cannot not be negative 
+// Users need to be able to withdraw money from savings account
+savingsWithdrawl.addEventListener('click', () => {
+  // Check if input is a number, same as above
+  if (isNaN(userSaving.value)) {
+    alert("Please enter a number")
+    return userSaving.value = '';
+  } else {
+
+    // set condition that account cant go below $1
+    if (userSaving.value > balance - 1) {
+      alert("Your balance cannot drop below $1.")
+      return userSaving.value = '';
+    } else {
+
+      // push to empty array withdraw
+      withdraw.push(Number(userSaving.value));
+
+      // total balance
+      balance -= (Number(userSaving.value))
+
+      // format to proper currency
+      let convertedBalance = currency.format(balance);
+      document.querySelector('#savings-balance').innerHTML = convertedBalance;
+
+      // console out result and then return
+      console.log(`${userSaving.value}`)
+      return userSaving.value = ''
+    }
+  }
+})
 
 
 
-// Accounts that hit zero show a red 0
 
-
-
-
-// Account needs to function independently 
