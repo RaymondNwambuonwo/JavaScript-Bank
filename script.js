@@ -1,16 +1,11 @@
 // Grab deposit buttons from the DOM
-const checkingWithdrawl = document.querySelector('#withdraw-checking')
+const checkingWithdraw = document.querySelector('#withdraw-checking')
 const checkingDeposit = document.querySelector('#deposit-checking')
 
 // Grab withdraw buttons from the DOM
-const savingsWithdrawl = document.querySelector('#withdraw-savings')
+const savingsWithdraw = document.querySelector('#withdraw-savings')
 const savingsDeposit = document.querySelector('#deposit-savings')
 
-//Check buttons if working
-console.log(checkingWithdrawl)
-console.log(checkingDeposit)
-console.log(savingsWithdrawl)
-console.log(savingsDeposit)
 
 
 // Establish a variable with an empty array, this is what user will put in.
@@ -43,36 +38,43 @@ const currency = new Intl.NumberFormat('en-US', {
 })
 
 
-
-// Users need to be able to deposit money into checking account.
-checkingDeposit.addEventListener('click', () => {
+function checkIfValueIsNaN(e) {
+  console.log(userChecking.value)
+  let userInputValue = userChecking.value
   // Use conditional to check if deposit is a number
-  if (isNaN(userChecking.value)) {
+  if (isNaN(userInputValue)) {
     alert("Enter a number.")
-    return userChecking.value = '';
+    return userInputValue = '';
   } else {
     //make condition for deposit to meet
-    if (userChecking.value < 0.01 || userChecking.value > 100000.00) {
+    if (userInputValue < 0.01 || userInputValue > 100000.00) {
       alert("Give a penny or a million but nothing more or less!")
-      return userChecking.value = '';
+      userInputValue = '';
+      handleCheckingDeposit(userInputValue)
+      return userInputValue
     } else {
+    }
 
+    function handleCheckingDeposit(userInputValue) {
       // Now use deposit variable with empty array to push value into.
-      deposit.push(Number(userChecking.value));
+      deposit.push(Number(userInputValue));
 
       // Get Total Balance
-      checkingBalanceValue += (Number(userChecking.value))
+      checkingBalanceValue += (Number(userInputValue))
 
       // format balance to show in money format
       let convertedBalance = currency.format(checkingBalanceValue)
       document.querySelector("#checking-balance").innerHTML = convertedBalance;
 
       // console log deposit to see if worked
-      console.log(`${userChecking.value}`)
-      return userChecking.value = ''
+      console.log(`${userInputValue}`)
+      return userInputValue = ''
     }
   }
-})
+}
+
+// Users need to be able to deposit money into checking account.
+checkingDeposit.addEventListener('click', checkIfValueIsNaN)
 
 
 // Users need to be able to deposit money into savings account.
@@ -107,7 +109,7 @@ savingsDeposit.addEventListener('click', () => {
 
 
 // Users need to be able to withdraw money from checking account.
-checkingWithdrawl.addEventListener('click', () => {
+checkingWithdraw.addEventListener('click', () => {
   // Check if input is a number, same as above
   if (isNaN(userChecking.value)) {
     alert("Please enter a number")
@@ -127,7 +129,7 @@ checkingWithdrawl.addEventListener('click', () => {
       checkingBalanceValue -= (Number(userChecking.value))
 
       // format to proper currency
-      let convertedBalance = currency.format(checkingBalance);
+      let convertedBalance = currency.format(checkingBalanceValue);
       document.querySelector('#checking-balance').innerHTML = convertedBalance;
 
       // console out result and then return
@@ -140,7 +142,7 @@ checkingWithdrawl.addEventListener('click', () => {
 
 
 // Users need to be able to withdraw money from savings account
-savingsWithdrawl.addEventListener('click', () => {
+savingsWithdraw.addEventListener('click', () => {
   // Check if input is a number, same as above
   if (isNaN(userSaving.value)) {
     alert("Please enter a number")
@@ -160,7 +162,7 @@ savingsWithdrawl.addEventListener('click', () => {
       savingBalanceValue -= (Number(userSaving.value))
 
       // format to proper currency
-      let convertedBalance = currency.format(savingBalance);
+      let convertedBalance = currency.format(savingBalanceValue);
       document.querySelector('#savings-balance').innerHTML = convertedBalance;
 
       // console out result and then return
