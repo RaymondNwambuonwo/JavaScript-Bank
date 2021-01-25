@@ -1,4 +1,4 @@
-# JavaScript Bank
+# JavaScript Bank Lesson
 # About
 A vanilla Javascript JavaScript Bank. 
 
