@@ -14,10 +14,10 @@ console.log(savingsDeposit)
 
 
 // Establish a variable with an empty array, this is what user will put in.
-const deposit = [] 
+const deposit = []
 
 // Establish a variable with an empty array, this is what user take out.
-const withdraw = [] 
+const withdraw = []
 
 // Users need to be able to see their balance in their savings and checking account
 const checkingBalance = document.querySelector('#checking-balance')
@@ -32,7 +32,8 @@ const userChecking = document.querySelector('#check-input')
 const userSaving = document.querySelector('#saving-input')
 
 // Declare balance variable 
-let balance = 0;
+let checkingBalanceValue = 0;
+let savingBalanceValue = 0;
 
 // Create currency variable, this creates language sensitive number formatting, this will allow users to enter in their proper currency. In this case it will be USD.
 const currency = new Intl.NumberFormat('en-US', {
@@ -60,10 +61,10 @@ checkingDeposit.addEventListener('click', () => {
       deposit.push(Number(userChecking.value));
 
       // Get Total Balance
-      balance += (Number(userChecking.value))
+      checkingBalanceValue += (Number(userChecking.value))
 
       // format balance to show in money format
-      let convertedBalance = currency.format(balance)
+      let convertedBalance = currency.format(checkingBalanceValue)
       document.querySelector("#checking-balance").innerHTML = convertedBalance;
 
       // console log deposit to see if worked
@@ -91,10 +92,10 @@ savingsDeposit.addEventListener('click', () => {
       deposit.push(Number(userSaving.value));
 
       // Get Total Balance
-      balance += (Number(userSaving.value))
+      savingBalanceValue += (Number(userSaving.value))
 
       // format balance to show in money format
-      let convertedBalance = currency.format(balance)
+      let convertedBalance = currency.format(savingBalanceValue)
       document.querySelector("#savings-balance").innerHTML = convertedBalance;
 
       // console log deposit to see if worked
@@ -114,7 +115,7 @@ checkingWithdrawl.addEventListener('click', () => {
   } else {
 
     // set condition that account cant go below $1
-    if (userChecking.value > balance - 1) {
+    if (userChecking.value > checkingBalanceValue - 1) {
       alert("Your balance cannot drop below $1.")
       return userChecking.value = '';
     } else {
@@ -123,10 +124,10 @@ checkingWithdrawl.addEventListener('click', () => {
       withdraw.push(Number(userChecking.value));
 
       // total balance
-      balance -= (Number(userChecking.value))
+      checkingBalanceValue -= (Number(userChecking.value))
 
       // format to proper currency
-      let convertedBalance = currency.format(balance);
+      let convertedBalance = currency.format(checkingBalance);
       document.querySelector('#checking-balance').innerHTML = convertedBalance;
 
       // console out result and then return
@@ -147,7 +148,7 @@ savingsWithdrawl.addEventListener('click', () => {
   } else {
 
     // set condition that account cant go below $1
-    if (userSaving.value > balance - 1) {
+    if (userSaving.value > savingBalanceValue - 1) {
       alert("Your balance cannot drop below $1.")
       return userSaving.value = '';
     } else {
@@ -156,10 +157,10 @@ savingsWithdrawl.addEventListener('click', () => {
       withdraw.push(Number(userSaving.value));
 
       // total balance
-      balance -= (Number(userSaving.value))
+      savingBalanceValue -= (Number(userSaving.value))
 
       // format to proper currency
-      let convertedBalance = currency.format(balance);
+      let convertedBalance = currency.format(savingBalance);
       document.querySelector('#savings-balance').innerHTML = convertedBalance;
 
       // console out result and then return
