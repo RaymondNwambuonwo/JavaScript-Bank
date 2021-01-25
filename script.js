@@ -42,10 +42,7 @@ const currency = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 2,
 })
 
-
-
-// Users need to be able to deposit money into checking account.
-checkingDeposit.addEventListener('click', () => {
+function depositFundsIntoChecking() {
   // Use conditional to check if deposit is a number
   if (isNaN(userChecking.value)) {
     alert("Enter a number.")
@@ -72,11 +69,12 @@ checkingDeposit.addEventListener('click', () => {
       return userChecking.value = ''
     }
   }
-})
+}
 
+// Users need to be able to deposit money into checking account.
+checkingDeposit.addEventListener('click', depositFundsIntoChecking)
 
-// Users need to be able to deposit money into savings account.
-savingsDeposit.addEventListener('click', () => {
+function depositFundsIntoSavings() {
   // Use conditional to check if deposit is a number
   if (isNaN(userSaving.value)) {
     alert("Enter a number")
@@ -103,11 +101,12 @@ savingsDeposit.addEventListener('click', () => {
       return userSaving.value = ''
     }
   }
-})
+}
+// Users need to be able to deposit money into savings account.
+savingsDeposit.addEventListener('click', depositFundsIntoSavings)
 
 
-// Users need to be able to withdraw money from checking account.
-checkingWithdrawl.addEventListener('click', () => {
+function withdrawFundsFromChecking() {
   // Check if input is a number, same as above
   if (isNaN(userChecking.value)) {
     alert("Please enter a number")
@@ -135,12 +134,12 @@ checkingWithdrawl.addEventListener('click', () => {
       return userChecking.value = ''
     }
   }
-})
+}
+// Users need to be able to withdraw money from checking account.
+checkingWithdrawl.addEventListener('click', withdrawFundsFromChecking)
 
 
-
-// Users need to be able to withdraw money from savings account
-savingsWithdrawl.addEventListener('click', () => {
+function withdrawFundsFromSavings() {
   // Check if input is a number, same as above
   if (isNaN(userSaving.value)) {
     alert("Please enter a number")
@@ -168,7 +167,9 @@ savingsWithdrawl.addEventListener('click', () => {
       return userSaving.value = ''
     }
   }
-})
+}
+// Users need to be able to withdraw money from savings account
+savingsWithdrawl.addEventListener('click', withdrawFundsFromSavings)
 
 
 
