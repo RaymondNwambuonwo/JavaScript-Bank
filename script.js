@@ -1,16 +1,16 @@
 // Grab deposit buttons from the DOM
-const checkingWithdrawl = document.querySelector('#withdraw-checking')
+const checkingWithdraw = document.querySelector('#withdraw-checking')
 const checkingDeposit = document.querySelector('#deposit-checking')
 
 // Grab withdraw buttons from the DOM
-const savingsWithdrawl = document.querySelector('#withdraw-savings')
+const savingsWithdraw = document.querySelector('#withdraw-savings')
 const savingsDeposit = document.querySelector('#deposit-savings')
 
 //Check buttons if working
-console.log(checkingWithdrawl)
-console.log(checkingDeposit)
-console.log(savingsWithdrawl)
-console.log(savingsDeposit)
+// console.log(checkingWithdraw)
+// console.log(checkingDeposit)
+// console.log(savingsWithdraw)
+// console.log(savingsDeposit)
 
 
 // Establish a variable with an empty array, this is what user will put in.
@@ -24,8 +24,8 @@ const checkingBalance = document.querySelector('#checking-balance')
 const savingsBalance = document.querySelector('#savings-balance')
 
 //Check buttons if working
-console.log(checkingBalance)
-console.log(savingsBalance)
+// console.log(checkingBalance)
+// console.log(savingsBalance)
 
 // Declare variable that allows to place input
 const userChecking = document.querySelector('#check-input')
@@ -42,7 +42,8 @@ const currency = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 2,
 })
 
-function depositFundsIntoChecking() {
+function depositFundsIntoChecking(e) {
+  console.log(e.target.value)
   // Use conditional to check if deposit is a number
   if (isNaN(userChecking.value)) {
     alert("Enter a number.")
@@ -72,9 +73,25 @@ function depositFundsIntoChecking() {
 }
 
 // Users need to be able to deposit money into checking account.
-checkingDeposit.addEventListener('click', depositFundsIntoChecking)
+checkingDeposit.addEventListener('click', checkIfNumberIsNaN)
 
 function depositFundsIntoSavings() {
+  // Now use deposit variable with empty array to push value into.
+  deposit.push(Number(userSaving.value));
+
+  // Get Total Balance
+  savingBalanceValue += (Number(userSaving.value))
+
+  // format balance to show in money format
+  let convertedBalance = currency.format(savingBalanceValue)
+  document.querySelector("#savings-balance").innerHTML = convertedBalance;
+
+  // console log deposit to see if worked
+  console.log(`${userSaving.value}`)
+  return userSaving.value = ''
+}
+
+function checkIfNumberIsNaN() {
   // Use conditional to check if deposit is a number
   if (isNaN(userSaving.value)) {
     alert("Enter a number")
@@ -85,25 +102,12 @@ function depositFundsIntoSavings() {
       alert("Give a penny or a million but nothing more or less!")
       return userSaving.value = '';
     } else {
-
-      // Now use deposit variable with empty array to push value into.
-      deposit.push(Number(userSaving.value));
-
-      // Get Total Balance
-      savingBalanceValue += (Number(userSaving.value))
-
-      // format balance to show in money format
-      let convertedBalance = currency.format(savingBalanceValue)
-      document.querySelector("#savings-balance").innerHTML = convertedBalance;
-
-      // console log deposit to see if worked
-      console.log(`${userSaving.value}`)
-      return userSaving.value = ''
+      depositFundsIntoSavings()
     }
   }
 }
 // Users need to be able to deposit money into savings account.
-savingsDeposit.addEventListener('click', depositFundsIntoSavings)
+savingsDeposit.addEventListener('click', checkIfNumberIsNaN)
 
 
 function withdrawFundsFromChecking() {
@@ -136,7 +140,7 @@ function withdrawFundsFromChecking() {
   }
 }
 // Users need to be able to withdraw money from checking account.
-checkingWithdrawl.addEventListener('click', withdrawFundsFromChecking)
+checkingWithdraw.addEventListener('click', withdrawFundsFromChecking)
 
 
 function withdrawFundsFromSavings() {
@@ -169,7 +173,7 @@ function withdrawFundsFromSavings() {
   }
 }
 // Users need to be able to withdraw money from savings account
-savingsWithdrawl.addEventListener('click', withdrawFundsFromSavings)
+savingsWithdraw.addEventListener('click', withdrawFundsFromSavings)
 
 
 
