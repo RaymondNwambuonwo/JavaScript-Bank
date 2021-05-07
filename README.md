@@ -14,7 +14,8 @@ A vanilla Javascript JavaScript Bank.
 
 
 ## Deployed Site
-The website can be found [here](https://javascriptbank.netlify.app/)
+Clone or fork repository.
+Open on your local server.
 
 # Future Development
 In the future I am looking to add a more dynamic look to the layout.
