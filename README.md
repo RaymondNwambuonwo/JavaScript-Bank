@@ -13,9 +13,9 @@ A vanilla Javascript JavaScript Bank.
 ![Screen Shot 2021-01-23 at 10 09 55 AM](https://user-images.githubusercontent.com/54545904/105601932-365ad500-5d63-11eb-8ab8-084531fda4ab.png)
 
 
-## Deployed Site
-Clone or fork repository.
-Open on your local server.
+## How to open/use
+1. Clone or fork repository.
+2. Open on your local server.
 
 # Future Development
 In the future I am looking to add a more dynamic look to the layout.
